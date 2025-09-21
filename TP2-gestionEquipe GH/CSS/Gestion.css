@@ -1,0 +1,167 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
+/* ==================================== */
+/* Variable CSS  */
+/* ==================================== */
+:root {
+  --primary-color: #007bff;
+  --dark-bg: #1e1e2f;
+  --glass-bg: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.1);
+}
+
+/* Styles Généraux */
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: var(--dark-bg);
+  color: black;
+  line-height: 1.6;
+}
+
+/* ==================================== */
+/* Logo de la page  */
+/* ==================================== */
+.logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo-icon {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  animation: logoBounce 2s infinite ease-in-out,
+    logoGlow 1.5s infinite alternate;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.logo-icon:hover {
+  transform: scale(1.1) rotate(5deg);
+}
+
+/* Glow effet autour du logo */
+@keyframes logoGlow {
+  from {
+    box-shadow: 0 0 10px #007bff, 0 0 20px #007bff;
+  }
+  to {
+    box-shadow: 0 0 20px #007bff, 0 0 35px #007bff, 0 0 50px #007bff;
+  }
+}
+
+/* Rebond fluide */
+@keyframes logoBounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+/* ==================================== */
+/* Effets page */
+/* ==================================== */
+
+/* Effets "Glassmorphism" */
+.glass-card,
+.glass-form,
+.glass-input {
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  border-radius: 15px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.glass-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3);
+}
+
+.glass-list-item {
+  background-color: transparent !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+  color: #f0f0f0;
+}
+
+.glass-input {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  color: #fff !important;
+  border-color: var(--glass-border) !important;
+}
+
+.glass-input::placeholder {
+  color: rgba(255, 255, 255, 0.6) !important;
+}
+
+/* Animations d'apparition */
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+/* ==================================== */
+/* Titre page + bouttons */
+/* ==================================== */
+.welcome-title {
+  font-weight: 700;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+  animation: titleGlow 2s infinite alternate;
+}
+
+@keyframes titleGlow {
+  from {
+    text-shadow: 0 0 10px #007bff, 0 0 20px #007bff;
+  }
+  to {
+    text-shadow: 0 0 15px #007bff, 0 0 25px #007bff, 0 0 30px #007bff;
+  }
+}
+
+.team-btn {
+  transition: all 0.3s ease;
+  border-radius: 50px;
+}
+
+.team-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* ==================================== */
+/* Affichage carte Equipe */
+/* ==================================== */
+.team-member-card {
+  max-width: 250px;
+}
+
+.card-img-custom {
+  object-fit: cover;
+  height: 200px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+/* ==================================== */
+/* Map  */
+/* ==================================== */
+.map-container {
+  overflow: hidden;
+  border-radius: 20px;
+  border: 3px solid #ff7b00;
+  box-shadow: 0 0 20px rgba(255, 123, 0, 0.5);
+  transition: all 0.5s ease;
+}
+
+.gta-map {
+  width: 100%;
+  height: 600px;
+  filter: saturate(1.8) brightness(0.8) contrast(1.2);
+  border: none;
+}

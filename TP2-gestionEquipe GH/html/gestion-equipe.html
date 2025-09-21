@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gestion d'équipe - Gabriel Hervé</title>
+    <link rel="icon" type="image/png" href="../photos/equipe.png" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    <link rel="stylesheet" href="../CSS/Gestion.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  </head>
+  <body class="bg-dark text-light" onload="initPage()">
+    <div class="logo-container text-center py-3">
+      <a href="../Accueil.html">
+        <img src="../photos/equipe.png" alt="mon Logo" class="logo-icon" />
+      </a>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg glass-effect-nav">
+      <div class="container-fluid">
+        <a class="navbar-brand d-flex align-items-center">
+          <div class="search-box-container">
+            <form class="d-flex search-form">
+              <input
+                class="form-control me-2 search-input"
+                type="search"
+                placeholder="Rechercher..."
+                aria-label="Search"
+              />
+              <button class="btn btn-outline-primary search-btn" type="submit">
+                <i class="fas fa-search"></i>
+              </button>
+            </form>
+          </div>
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <a
+              class="nav-link"
+              href="https://developer.mozilla.org/fr/docs/Games/Techniques/3D_on_the_web/Building_up_a_basic_demo_with_Three.js"
+              target="_blank"
+              rel="noopener"
+            >
+              <img
+                src="../Animated/icons8-help.gif"
+                alt="Aide"
+                style="height: 24px; width: 24px"
+              />
+            </a>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Contenu principal -->
+    <main class="container py-5">
+      <h1 class="welcome-title text-center my-5">Gestion de l'équipe</h1>
+
+      <!-- Section de l'équipe -->
+      <section class="card-section my-5">
+        <h2 class="text-center mb-4">Votre équipe</h2>
+        <div class="d-flex justify-content-center mb-4">
+          <div class="card glass-card team-member-card me-3 fade-in-up">
+            <img
+              id="maPhoto"
+              src="../photos/moi.jpg"
+              class="card-img-top card-img-custom"
+              alt="Moi"
+            />
+            <div class="card-body">
+              <h5 class="card-title text-center" style="color: aliceblue">
+                Sylvain Branconnier
+              </h5>
+              <p class="card-text text-center" style="color: aliceblue">
+                Le GOAT
+              </p>
+            </div>
+            <ul class="list-group list-group-flush text-center">
+              <li class="list-group-item glass-list-item">
+                Latitude : <span id="latE">...</span>
+              </li>
+              <li class="list-group-item glass-list-item">
+                Longitude : <span id="longE">...</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div id="team-members" class="row justify-content-center g-4"></div>
+      </section>
+
+      <!-- Section de gestion de l'équipe -->
+      <section class="form-section my-5">
+        <div class="glass-form p-4 rounded-4">
+          <h2 class="text-center mb-4">Gérer l'équipe</h2>
+          <form id="team-form">
+            <div class="mb-3">
+              <label for="nombrePerso" class="form-label text-center d-block">
+                Nombre de participants (excluant vous) :
+              </label>
+              <select name="numeroPerso" id="nombrePerso" class="form-select">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+              </select>
+            </div>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-center mt-4">
+              <button
+                type="button"
+                class="btn btn-primary btn-lg team-btn"
+                onclick="AfficherPersonnages();"
+              >
+                Créer l'équipe
+              </button>
+              <button
+                type="button"
+                class="btn btn-danger btn-lg team-btn"
+                onclick="SuppEquipe();"
+              >
+                Supprimer l'équipe
+              </button>
+              <button
+                type="button"
+                class="btn btn-success btn-lg team-btn"
+                onclick="LieuReunion();"
+              >
+                Déterminer le lieu de réunion
+              </button>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <!-- Section de la carte -->
+      <section class="map-section my-5">
+        <h2 class="text-center mb-4">Lieu de réunion</h2>
+        <div
+          id="map-container"
+          class="map-container fade-in-up"
+          data-delay="0.3"
+        >
+          <div id="map"></div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+    <script src="../JS/monJS.js"></script>
+    <script src="../JS/thePosition.JS"></script>
+  </body>
+</html>

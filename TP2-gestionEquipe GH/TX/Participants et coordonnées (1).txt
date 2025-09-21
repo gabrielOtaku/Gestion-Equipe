@@ -1,0 +1,33 @@
+Participant(9)
+Trump, Macron, Obama, Poutine, Sylvain, Glen, Alexandre, Michel et Drake
+
+Coordonnées (9)
+	latitude1  = 48.545389;
+	longitude1 = -71.654857;
+
+	latitude2  = 48.419172;
+	longitude2 = -71.052653;	
+
+	latitude2  = 46.831086;
+	longitude2 = -71.299388;
+
+	latitude3  = 45.496180;
+	longitude3 = -73.569278;
+
+	latitude4  = 45.425198;
+	longitude4 = -75.699824;
+
+	latitude5  = 48.858547;
+	longitude5 = 2.294481;
+
+	latitude6  = 48.3651200676972;
+	longitude6 = -69.45603283662265;
+
+	latitude7  = 48.601927829763525;
+	longitude7 = -72.34082224959018;
+
+	latitude8  = 48.89193368592226;
+	longitude8 = -72.23448339615906;
+
+	latitude9  = 49.27810054342625; 
+	longitude9 = -123.1548049282394;

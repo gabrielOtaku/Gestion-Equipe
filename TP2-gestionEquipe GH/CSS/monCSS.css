@@ -1,0 +1,380 @@
+/* ==================================== */
+/* Variables CSS                        */
+/* ==================================== */
+:root {
+  --primary-color: #007bff;
+  --primary-shadow-color: rgba(0, 123, 255, 0.4);
+  --dark-purple: #1f016d;
+  --light-purple: #8f2e82;
+  --white: #fff;
+  --glass-bg: rgba(255, 255, 255, 0.1);
+  --glass-border: rgba(255, 255, 255, 0.2);
+  --glass-blur: 20px;
+  --border-radius-lg: 20px;
+  --border-radius-full: 50px;
+  --transition-speed: 0.4s;
+}
+
+/* ==================================== */
+/* Styles Généraux et Arrière-plan      */
+/* ==================================== */
+body {
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(135deg, var(--dark-purple), var(--light-purple));
+  min-height: 100vh;
+  overflow-x: hidden;
+  color: var(--white);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('data:image/svg+xml;charset=UTF-8,<svg width="100%" height="100%" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="circles-1" x="0" y="0" width="10" height="10" patternUnits="userSpaceOnUse"><circle cx="5" cy="5" r="1.5" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100%" height="100%" fill="url(#circles-1)"/></svg>')
+    repeat;
+  opacity: 0.5;
+  z-index: -2;
+}
+
+/* ==================================== */
+/* Animations Globales                  */
+/* ==================================== */
+.fade-in {
+  animation: fadeIn 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.glass-effect {
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur)) saturate(180%);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(180%);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--border-radius-lg);
+  box-shadow: 0 10px 40px 0 rgba(0, 0, 0, 0.4);
+  animation: popUp 0.9s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes popUp {
+  from {
+    transform: scale(0.7) translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+}
+
+/* ==================================== */
+/* Titre de Bienvenue                   */
+/* ==================================== */
+.welcome-title {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 700;
+  color: var(--white);
+  text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  animation: textGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes textGlow {
+  from {
+    text-shadow: 0 0 5px var(--white), 0 0 10px var(--white),
+      0 0 15px var(--primary-color), 0 0 20px var(--primary-color);
+  }
+  to {
+    text-shadow: 0 0 10px var(--white), 0 0 20px var(--white),
+      0 0 30px var(--primary-color), 0 0 40px var(--primary-color);
+  }
+}
+
+.user-name {
+  color: var(--primary-color);
+}
+
+/* ==================================== */
+/* Barre de Navigation                  */
+/* ==================================== */
+.glass-effect-nav {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+  transition: all var(--transition-speed) ease-in-out;
+}
+
+.search-box-container {
+  flex-grow: 1;
+  margin-left: 20px;
+}
+
+.search-form {
+  max-width: 400px;
+  position: relative;
+  border-radius: var(--border-radius-full);
+  overflow: hidden;
+  background: var(--glass-bg);
+}
+
+.search-input {
+  border: none;
+  background: transparent;
+  color: var(--white);
+  padding-left: 50px;
+  transition: background-color var(--transition-speed) ease;
+}
+
+.search-input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.search-input:focus {
+  box-shadow: none;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.search-btn {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  border: none;
+  color: var(--white);
+  background: transparent;
+  transition: background-color var(--transition-speed) ease;
+}
+
+.search-btn:hover {
+  background-color: var(--primary-shadow-color);
+}
+
+.logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo-icon {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  animation: logoBounce 2s infinite ease-in-out,
+    logoGlow 1.5s infinite alternate;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+/* Glow effet autour du logo */
+@keyframes logoGlow {
+  from {
+    box-shadow: 0 0 10px #007bff, 0 0 20px #007bff;
+  }
+  to {
+    box-shadow: 0 0 20px #007bff, 0 0 35px #007bff, 0 0 50px #007bff;
+  }
+}
+
+/* Rebond fluide */
+@keyframes logoBounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+/* Effet au survol (hover) */
+.logo-icon:hover {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.nav-link {
+  color: rgba(255, 255, 255, 0.8) !important;
+  position: relative;
+  transition: color var(--transition-speed) ease;
+}
+
+.nav-link:hover {
+  color: var(--white) !important;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--primary-color);
+  transition: width var(--transition-speed) ease;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* ==================================== */
+/* Conteneur du Formulaire              */
+/* ==================================== */
+.login-form-container {
+  width: 100%;
+  max-width: 500px;
+  padding: 3rem 2.5rem;
+  margin: 2rem auto;
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+  border-radius: var(--border-radius-lg);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  animation: popUp 0.9s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+/* Champs du formulaire */
+.login-form-container input {
+  width: 100%;
+  padding: 0.9rem 1rem;
+  border-radius: var(--border-radius-full);
+  border: 1px solid var(--glass-border);
+  background: rgba(255, 255, 255, 0.15);
+  color: var(--white);
+  font-size: 1rem;
+  transition: border var(--transition-speed), background var(--transition-speed);
+}
+
+.login-form-container input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.login-form-container input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 0 10px var(--primary-shadow-color);
+}
+
+/* État fullscreen (au reset) */
+.fullscreen-form {
+  width: 100% !important;
+  height: 100vh !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fullscreen-form .login-form-container {
+  width: 100%;
+  max-width: 540px;
+  height: auto;
+  margin: 0;
+  border-radius: var(--border-radius-lg);
+  padding: 4rem 2.5rem;
+}
+
+/* ==================================== */
+/* Styles des Boutons                   */
+/* ==================================== */
+.login-btn {
+  position: relative;
+  overflow: hidden;
+  transition: all var(--transition-speed) cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  border-radius: var(--border-radius-full);
+  font-weight: 600;
+}
+
+.login-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px var(--primary-shadow-color);
+}
+
+.login-btn:disabled {
+  cursor: not-allowed;
+  background-color: var(--primary-color) !important;
+  opacity: 0.6;
+}
+
+.reset-btn {
+  border-radius: var(--border-radius-full);
+  font-weight: 500;
+  transition: transform var(--transition-speed) ease;
+}
+
+.reset-btn:hover {
+  transform: scale(1.05);
+}
+
+/* ==================================== */
+/* Animation d'effacement de texte      */
+/* ==================================== */
+@keyframes eraseText {
+  0% {
+    width: 100%;
+    opacity: 1;
+  }
+  100% {
+    width: 0;
+    opacity: 0;
+  }
+}
+
+.erasing {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+}
+
+.erasing::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  background-color: var(--white);
+  animation: eraseText 0.5s forwards;
+}
+
+/* ==================================== */
+/* Responsive et Conteneur du Robot 3D  */
+/* ==================================== */
+
+/* Conteneur pour le robot 3D */
+.robot-container {
+  width: 100%;
+  height: 400px;
+  max-width: 500px;
+  position: relative;
+  padding-left: 20px;
+}
+
+#robotCanvas {
+  width: 100% !important;
+  height: 100% !important;
+  position: absolute;
+  top: 0;
+  left: 0;
+}

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>TP2-Connexion Gabriel HERVE</title>
+    <link rel="icon" type="image/png" href="photos/equipe.png" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    <link rel="stylesheet" href="CSS/monCSS.css" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://unpkg.com/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+  </head>
+
+  <body class="fade-in">
+    <div class="logo-container text-center py-3">
+      <a href="Accueil.html">
+        <img src="photos/equipe.png" alt="mon Logo" class="logo-icon" />
+      </a>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg glass-effect-nav">
+      <div class="container-fluid">
+        <div class="search-box-container">
+          <form class="d-flex search-form">
+            <input
+              class="form-control me-2 search-input"
+              type="search"
+              placeholder="Rechercher..."
+              aria-label="Search"
+            />
+            <button class="btn btn-outline-primary search-btn" type="submit">
+              <i class="fas fa-search"></i>
+            </button>
+          </form>
+        </div>
+
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                href="https://developer.mozilla.org/fr/docs/Games/Techniques/3D_on_the_web/Building_up_a_basic_demo_with_Three.js"
+                target="_blank"
+                rel="noopener"
+              >
+                <img
+                  src="Animated/icons8-help.gif"
+                  alt="Aide"
+                  style="height: 24px; width: 24px"
+                />
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <main class="main-content">
+      <div
+        class="container d-flex flex-column align-items-center justify-content-center h-100"
+      >
+        <h1 class="welcome-title text-center mb-5" id="welcome-message">
+          Bienvenue <span class="user-name"></span>
+        </h1>
+
+        <div class="row w-100 align-items-center justify-content-center">
+          <div class="col-12 col-lg-8">
+            <div
+              class="login-form-container glass-effect shadow-lg p-5 rounded-4"
+            >
+              <h2 class="text-center mb-4">Connexion</h2>
+              <form id="loginForm">
+                <div class="mb-3 form-floating">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="nom"
+                    placeholder="Nom d'utilisateur"
+                    required
+                  />
+                  <label for="nom">Nom d'utilisateur</label>
+                </div>
+                <div class="mb-4 form-floating">
+                  <input
+                    type="password"
+                    class="form-control"
+                    id="pwd"
+                    placeholder="Mot de passe"
+                    required
+                  />
+                  <label for="pwd">Mot de passe</label>
+                </div>
+                <div class="d-grid gap-2 mb-3">
+                  <button
+                    id="loginBtn"
+                    type="submit"
+                    class="btn btn-primary btn-lg login-btn"
+                    disabled
+                  >
+                    <span id="btnText">Se connecter</span>
+                    <span
+                      id="loadingSpinner"
+                      class="spinner-border spinner-border-sm d-none"
+                      role="status"
+                      aria-hidden="true"
+                    ></span>
+                  </button>
+                </div>
+                <div class="d-grid">
+                  <button
+                    type="button"
+                    class="btn btn-outline-secondary btn-sm reset-btn"
+                    id="resetBtn"
+                  >
+                    Réinitialiser
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+          <div
+            class="col-12 col-lg-4 d-flex justify-content-right align-items-right"
+          >
+            <div class="robot-container">
+              <canvas id="robotCanvas"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script src="JS/monJS.js"></script>
+  </body>
+</html>
